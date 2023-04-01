@@ -21,21 +21,29 @@ public class User implements Serializable {
 	private static final long serialVersionUID = -1745455113089441400L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	private Person id_person;
 	@Column
-	private String login;
+	private String userName;
 	@Column
 	private String pass;
 	
-	public String getLogin() {
-		return login;
+	public User() {
+    }
+
+    public User(String username, String password) {
+        this.userName = username;
+        this.pass = password;
+    }
+	
+	public String getUserName() {
+		return userName;
 	}
-	public void setLogin(String login) {
-		this.login = login;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 	public String getPass() {
 		return pass;
